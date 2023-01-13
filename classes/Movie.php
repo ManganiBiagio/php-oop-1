@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__  ."/Generes.php";
 class Movie {
     private $title;
     private $actors;
@@ -8,11 +8,12 @@ class Movie {
     private $generes;
      
 
-    public function  __construct($_title,$_actors, $_year_production, $_vote){
+    public function  __construct($_title,$_actors, $_year_production, $_vote,$_generes=[]){
         $this->setTitle($_title);
         $this->setActors($_actors);
         $this->setYear_production($_year_production);
         $this->setVote($_vote);
+        $this->setGeneres($_generes);
 
     }
 
@@ -43,7 +44,23 @@ class Movie {
      */ 
     public function setGeneres($generes)
     {
-        $this->generes = $generes;
+        try{
+            foreach($generes as $gen){
+                if($gen instanceof Generes){
+                    $this->generes[] = $gen;
+                }else{
+                    throw new Exception();
+                }
+            }
+
+        }catch(Exception $e){
+            print "something went wrong";
+
+
+        }
+        
+        
+
 
         return $this;
     }

@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__  . "/Generes.php";
+require_once __DIR__ ."/Actor.php";
 class Movie
 {
     private $title;
@@ -46,7 +47,7 @@ class Movie
      */
     public function setGeneres($generesList)
     {
-        
+
         foreach ($generesList as $gen) {
             if(gettype($gen)=="string"){
                 $this->generes[]=new Generes($gen);
@@ -118,9 +119,17 @@ class Movie
      *
      * @return  self
      */
-    public function setActors($actors)
+    public function setActors($actorsList)
     {
-        $this->actors = $actors;
+        foreach ($actorsList as $actor) {
+            if(gettype($actor)=="array"){
+                $newActor=new Actor($actor["name"],$actor["surname"]);
+                $this->actors[]=$newActor;
+            }else{
+
+            }
+            
+        }
 
         return $this;
     }

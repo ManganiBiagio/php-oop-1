@@ -2,6 +2,7 @@
 require_once "./classes/Movie.php";
 require_once "./classes/Generes.php";
 require_once "./dates/movieDb.php";
+require_once "./classes/Actor.php";
 
 
 // $myMovie=new Movie("prova",["pippo","pluto"],1940,4.5);
@@ -14,9 +15,7 @@ require_once "./dates/movieDb.php";
 
 $movieList=[];
 foreach($movieListInfo as $movie){
-    $newMovie=new Movie($movie["title"],$movie["actors"],$movie["year_production"],$movie["vote"]);
-    
-    $newMovie->setGeneres($movie["generes"]);
+    $newMovie=new Movie($movie["title"],$movie["actors"],$movie["year_production"],$movie["vote"],$movie["generes"]);
     $movieList[]=$newMovie;
 
 }
@@ -52,7 +51,7 @@ foreach($movieListInfo as $movie){
                             <h6>Attori:</h6>
                             <ul>
                             <?php foreach ($movie->getActors() as $actor) { ?>
-                                <li><?php echo $actor ?></li>
+                                <li><?php echo $actor->getFullName() ?></li>
                                 <?php } ?>
                                 
                             </ul>

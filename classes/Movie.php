@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__  . "/Generes.php";
 require_once __DIR__ ."/Actor.php";
+require_once __DIR__ ."/Regista.php";
 class Movie
 {
     private $title;
@@ -8,15 +9,17 @@ class Movie
     private $year_production;
     private $vote;
     private $generes;
+    private $regia;
 
 
-    public function  __construct($_title, $_actors, $_year_production, $_vote, $_generes = [])
+    public function  __construct($_title, $_actors, $_year_production, $_vote, $_generes = [],$_regia=[])
     {
         $this->setTitle($_title);
         $this->setActors($_actors);
         $this->setYear_production($_year_production);
         $this->setVote($_vote);
         $this->setGeneres($_generes);
+        $this->setRegia($_regia);
     }
 
     public function toString()
@@ -150,6 +153,35 @@ class Movie
     public function setTitle($title)
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of regia
+     */ 
+    public function getRegia()
+    {
+        return $this->regia;
+    }
+
+    /**
+     * Set the value of regia
+     *
+     * @return  self
+     */ 
+    public function setRegia($regiaList)
+    {
+        foreach ($regiaList as $regista) {
+            if(gettype($regista)=="array"){
+                $newRegista=new Regista($regista["name"],$regista["surname"],$regista["style"]);
+                $this->regia[]=$newRegista;
+            }else{
+
+            }
+            
+        }
+       
 
         return $this;
     }

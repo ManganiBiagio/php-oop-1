@@ -15,7 +15,14 @@ $movieListInfo=[
     ],
       "year_production"=>1990,
       "vote"=>5,
-      "generes"=>["action","drammatic"]
+      "generes"=>["action","drammatic"],
+      "regia"=>[
+        [
+          "name"=>"Steven ",
+          "surname"=>"Spielberg"
+        ]
+      ]
+
 
     ],
     [
@@ -33,7 +40,14 @@ $movieListInfo=[
       ],
         "year_production"=>2022,
         "vote"=>4.5,
-        "generes"=>["romantic"]
+        "generes"=>["romantic"],
+        "regia"=>[
+          [
+            "name"=>"Tim ",
+            "surname"=>"Burton",
+            "style"=>["Dark"]
+          ]
+        ]
   
     ],
     [
@@ -47,7 +61,13 @@ $movieListInfo=[
       ],
         "year_production"=>1999,
         "vote"=>5,
-        "generes"=>["comedy"]
+        "generes"=>["comedy"],
+        "regia"=>[
+          [
+            "name"=>"Sergio ",
+            "surname"=>"Leone"
+          ]
+        ]
   
       ]
 

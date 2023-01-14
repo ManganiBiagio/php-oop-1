@@ -15,12 +15,12 @@ require_once "./classes/Actor.php";
 
 $movieList=[];
 foreach($movieListInfo as $movie){
-    $newMovie=new Movie($movie["title"],$movie["actors"],$movie["year_production"],$movie["vote"],$movie["generes"]);
+    $newMovie=new Movie($movie["title"],$movie["actors"],$movie["year_production"],$movie["vote"],$movie["generes"],$movie["regia"]);
     $movieList[]=$newMovie;
 
 }
 
-// var_dump($movieList);
+ //var_dump($movieList);
 
 
 ?>
@@ -59,6 +59,18 @@ foreach($movieListInfo as $movie){
                             <ul>
                             <?php foreach ($movie->getGeneres() as $gen) { ?>
                                 <li><?php echo $gen->getGen_type() ?></li>
+                                <?php } ?>
+                                
+                            </ul>
+                            <h6>Regia:</h6>
+                            <ul>
+                            <?php foreach ($movie->getRegia() as $reg) { ?>
+                                <li><?php echo $reg->getFullName() ?>
+                                <?php if(!is_null($reg->getStyle()[0])){ ?>
+                                <span><strong>Stile:</strong><?php echo $reg->getStyle()[0] ?></span>
+                                <?php } ?>
+                            
+                            </li>
                                 <?php } ?>
                                 
                             </ul>

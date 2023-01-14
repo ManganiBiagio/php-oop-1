@@ -1,37 +1,39 @@
 <?php
-require_once __DIR__  ."/Generes.php";
-class Movie {
+require_once __DIR__  . "/Generes.php";
+class Movie
+{
     private $title;
     private $actors;
     private $year_production;
     private $vote;
     private $generes;
-     
 
-    public function  __construct($_title,$_actors, $_year_production, $_vote,$_generes=[]){
+
+    public function  __construct($_title, $_actors, $_year_production, $_vote, $_generes = [])
+    {
         $this->setTitle($_title);
         $this->setActors($_actors);
         $this->setYear_production($_year_production);
         $this->setVote($_vote);
         $this->setGeneres($_generes);
-
     }
 
-    public function toString(){
-        return "title:". $this->getTitle() . " attori:". $this->getActors();
+    public function toString()
+    {
+        return "title:" . $this->getTitle() . " attori:" . $this->getActors();
     }
 
-   
 
 
-    
-    
-    
+
+
+
+
     // GETTERS AND SETTERS
 
     /**
      * Get the value of generes
-     */ 
+     */
     public function getGeneres()
     {
         return $this->generes;
@@ -41,25 +43,23 @@ class Movie {
      * Set the value of generes
      *
      * @return  self
-     */ 
-    public function setGeneres($generes)
+     */
+    public function setGeneres($generesList)
     {
-        try{
-            foreach($generes as $gen){
-                if($gen instanceof Generes){
-                    $this->generes[] = $gen;
-                }else{
-                    throw new Exception();
-                }
+        
+        foreach ($generesList as $gen) {
+            if(gettype($gen)=="string"){
+                $this->generes[]=new Generes($gen);
+            }else{
+
             }
-
-        }catch(Exception $e){
-            print "something went wrong";
-
-
+            
         }
-        
-        
+
+
+
+
+
 
 
         return $this;
@@ -67,7 +67,7 @@ class Movie {
 
     /**
      * Get the value of vote
-     */ 
+     */
     public function getVote()
     {
         return $this->vote;
@@ -77,7 +77,7 @@ class Movie {
      * Set the value of vote
      *
      * @return  self
-     */ 
+     */
     public function setVote($vote)
     {
         $this->vote = $vote;
@@ -87,7 +87,7 @@ class Movie {
 
     /**
      * Get the value of year_production
-     */ 
+     */
     public function getYear_production()
     {
         return $this->year_production;
@@ -97,7 +97,7 @@ class Movie {
      * Set the value of year_production
      *
      * @return  self
-     */ 
+     */
     public function setYear_production($year_production)
     {
         $this->year_production = $year_production;
@@ -107,7 +107,7 @@ class Movie {
 
     /**
      * Get the value of actors
-     */ 
+     */
     public function getActors()
     {
         return $this->actors;
@@ -117,7 +117,7 @@ class Movie {
      * Set the value of actors
      *
      * @return  self
-     */ 
+     */
     public function setActors($actors)
     {
         $this->actors = $actors;
@@ -127,7 +127,7 @@ class Movie {
 
     /**
      * Get the value of title
-     */ 
+     */
     public function getTitle()
     {
         return $this->title;
@@ -137,7 +137,7 @@ class Movie {
      * Set the value of title
      *
      * @return  self
-     */ 
+     */
     public function setTitle($title)
     {
         $this->title = $title;
@@ -145,4 +145,3 @@ class Movie {
         return $this;
     }
 }
-
